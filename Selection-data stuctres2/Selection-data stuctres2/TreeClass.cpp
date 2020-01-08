@@ -1,7 +1,7 @@
 #include "TreeClass.h"
 
 
-void BSTree::Delete(KeyType item)
+void BSTree::Delete(int item)
 {
     BSTreeNode* v = this->Find(item);
     
@@ -104,7 +104,7 @@ void BSTree::PrintTree(void)
 }
 
 //Find: Return pointer to node containing key k. Return NULL if item not in tree.
-BSTreeNode* BSTree::Find(KeyType k)
+BSTreeNode* BSTree::Find(int k)
 {
     BSTreeNode* temp = root;
     while (temp != NULL)
@@ -120,7 +120,7 @@ BSTreeNode* BSTree::Find(KeyType k)
 }
 
 //Insert into Binary Search Tree.
-void BSTree::Insert(KeyType k, DataType d)
+void BSTree::Insert(int k, const char* d)
 {
     if (Find(k) != NULL)
     {
@@ -136,9 +136,9 @@ void BSTree::Insert(KeyType k, DataType d)
     {//find parent of new node
         parent = temp;
         if (k < temp->getkey())
-            temp = root->getleft();
+            temp = temp->getleft();
         else
-            temp = root->getright();
+            temp = temp->getright();
     }
 
     newnode = new BSTreeNode(k, d, nullptr, nullptr,nullptr);    //memory of new node
@@ -154,6 +154,11 @@ void BSTree::Insert(KeyType k, DataType d)
         else
             parent->setright(newnode);    //insert as right child
     }
+}
+
+BSTreeNode* BSTree::getroot()
+{
+    return this->root;
 }
 
 

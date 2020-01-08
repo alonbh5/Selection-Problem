@@ -27,19 +27,16 @@ int main()
     //option 1
     const Person rselect = RandSelection(arr, 0, n-1, k, NumCompR);
 
+    const Person Bselect = BST(arr, n, k, NumCompBST);
+
     const Person hselect = selectHeap(arr, n, k, NumCompH);
-    //cout << NumComp;
+
+    cout << rselect.getId() << " " << rselect.getname() << endl << endl;;
+    cout << Bselect.getId() << " " << Bselect.getname() << endl << endl;;
+    cout << hselect.getId() << " " << hselect.getname() << endl << endl;;
+    cout << "RandSelection: " << NumCompR << " comparisons" << endl << endl;
+    cout << "selectHeap: " << NumCompH << " comparisons" << endl << endl;
+    cout << "BST: " << NumCompBST << " comparisons";
+    system("pause");
 }
 
-/*
-
-
-void main()
-{
-    int A[10] = { 45,3,69,97,82,16,73,40,88,32 };
-    printarr(A);
-    select(A, 0, 9, 6);
-}
-
-
-*/

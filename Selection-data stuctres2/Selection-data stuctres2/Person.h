@@ -21,9 +21,11 @@ public:
 	Person(const Person& other);
 	
 	int getId() const;
+	const char* getname() const;
 	const Person& operator=(const Person& other);
 	void setName(const char* name);
 	void setId(int id);
+	
 
 };
 

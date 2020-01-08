@@ -6,7 +6,7 @@ Person::Person(const char* name, int id)
 	this->id = id;
 }
 
-Person::Person(const Person& other)
+Person::Person(const Person& other) 
 {
 	*this = other;
 }
@@ -16,6 +16,11 @@ Person::Person(const Person& other)
 int Person::getId() const
 {
 	return this->id;
+}
+
+const char* Person::getname() const
+{
+	return this->name;
 }
 
 const Person& Person::operator=(const Person& other)

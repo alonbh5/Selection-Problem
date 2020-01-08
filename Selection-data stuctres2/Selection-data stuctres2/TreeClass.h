@@ -21,12 +21,14 @@ private:
 public:
     BSTree(BSTreeNode* root=nullptr);   //empty c'tor
     ~BSTree();
-    void Delete(KeyType item);
+    void Delete(int item);
     BSTreeNode* Min(void);
     BSTreeNode* Max(void);
     void PrintTree(void);
-    BSTreeNode* Find(KeyType k);
-    void Insert(KeyType k, DataType d);
+    BSTreeNode* Find(int k);
+    void Insert(int k, const char* d);
+    BSTreeNode* getroot();
+
 
     
     
