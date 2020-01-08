@@ -24,10 +24,10 @@
     <ClCompile Include="TreeClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HeapCalss.cpp">
+    <ClCompile Include="TreeNodeClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TreeNodeClass.cpp">
+    <ClCompile Include="HeapMin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="TreeNodeClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeapCalss.h">
+    <ClInclude Include="HeapMin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -138,14 +138,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HeapCalss.cpp" />
+    <ClCompile Include="HeapMin.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="TreeClass.cpp" />
     <ClCompile Include="TreeNodeClass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HeapCalss.h" />
+    <ClInclude Include="HeapMin.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="TreeClass.h" />
     <ClInclude Include="TreeNodeClass.h" />

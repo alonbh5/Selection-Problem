@@ -1,4 +1,5 @@
-#include "Heapcalss.h"
+#include "HeapMin.h"
+
 
 //C'tor: allocate memory for the heap and make the heap empty.
 Heap::Heap(int max)
@@ -15,6 +16,11 @@ Heap::~Heap()
     if (allocated)
         delete[] data;
     data = nullptr;
+}
+
+Type Heap::Min()
+{
+	return this->data[0];
 }
 
 
@@ -37,39 +43,39 @@ int Heap::Right(int node)
 
 void Heap::FixHeap(int node)    //Fixes the heap that has node as root
 {
-    int max;
+    int min;
     int left = Left(node);
     int right = Right(node);
 
     //Find aximu among node, left and right.
-    if ((left < heapSize) && (data[left] > data[node]))
-        max = left;
-    else max = node;
-    if ((right < heapSize) && (data[right] > data[max]))
-        max = right;
+    if ((left < heapSize) && (data[left] < data[node]))
+        min = left;
+    else min = node;
+    if ((right < heapSize) && (data[right] < data[min]))
+        min = right;
 
     //Seap values if neccessary, and continue fixing the heap towards the leaves.
-    if (max != node)
+    if (min != node)
     {
-        std::swap(data[node], data[max]);
-            FixHeap(max);
+        std::swap(data[node], data[min]);
+            FixHeap(min);
     }
 }
 
 //Delete maximum which is found in the root of heap, and fix heap.
-Type Heap::DeleteMax()
+Type Heap::DeleteMin(void)
 {
-    if (heapSize < 1)
-    {
-        cout << "Error: EMPTY HEAP\n";
-        exit(1);
-    }
+	if (heapSize < 1)
+	{
+		cout << "Error: EMPTY HEAP\n";
+		exit(1);
+	}
 
-    Type max = data[0];
-    heapSize--;
-    data[0] = data[heapSize];
-    FixHeap(0);
-    return (max);
+	Type min = data[0];
+	heapSize--;
+	data[0] = data[heapSize];
+	FixHeap(0);
+	return (min);
 }
 
 //Add a new leaf for item, and swap upwards until item is in its correct position.
@@ -84,7 +90,7 @@ void Heap::Insert(Type item)
     int i = heapSize;
     heapSize++;
 
-    while ((i > 0) && (data[Parent(i)] < item))
+    while ((i > 0) && (data[Parent(i)] > item))
     {
         data[i] = data[Parent(i)];
         i = Parent(i);

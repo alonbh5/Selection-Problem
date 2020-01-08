@@ -1,5 +1,5 @@
-#ifndef _HEAPCALSS_H
-#define _HEAPCALSS_H
+#ifndef _HEAPMIN_H
+#define _HEAPMIN_H
 
 
 #include <iostream>
@@ -24,9 +24,9 @@ public:
     Heap(int max);                   //Allocate memory
     Heap(Type A[], int n);           //Turn A[] into heap
     ~Heap();
-    Type Max(void);
-    Type DeleteMax(void);
+    Type Min();
+    Type DeleteMin(void);
     void Insert(Type item);
 };
 
-#endif // !_HEAPCALSS_H
+#endif // !_HEAPMIN_H

@@ -56,3 +56,5 @@ void BSTree::Insert(KeyType k, DataType d)
         parent->setright(newnode);    //insert as right child
 }
 
+
+
