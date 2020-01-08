@@ -1,5 +1,39 @@
 #include "TreeNodeClass.h"
 
+void BSTreeNode::Inorder()
+{
+	if (this->left != nullptr)
+		this->left->Inorder();
+	cout << " " << this->data << " ";
+	if (this->right != nullptr)
+		this->right->Inorder();
+
+	cout << endl;
+}
+
+void BSTreeNode::Preorder()
+{
+	cout << " " << this->data << " ";
+	if (this->left != nullptr)
+		this->left->Inorder();	
+	if (this->right != nullptr)
+		this->right->Inorder();
+
+	cout << endl;
+}
+
+void BSTreeNode::Postorder()
+{
+	
+	if (this->left != nullptr)
+		this->left->Inorder();
+	if (this->right != nullptr)
+		this->right->Inorder();
+	cout << " " << this->data << " ";
+
+	cout << endl;
+}
+
 KeyType BSTreeNode::getkey()
 {
 	return this->key;
@@ -13,4 +47,14 @@ BSTreeNode* BSTreeNode::getleft()
 BSTreeNode* BSTreeNode::getright()
 {
 	return this->right;
+}
+
+void BSTreeNode::setright(BSTreeNode* right)
+{
+	this->right = right;
+}
+
+void BSTreeNode::setleft(BSTreeNode* left)
+{
+	this->left = left;
 }

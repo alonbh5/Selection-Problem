@@ -29,6 +29,9 @@ public:
     BSTreeNode* getleft();
     BSTreeNode* getright();
 
+    void setright(BSTreeNode* right);
+    void setleft(BSTreeNode* left);
+
 };
 
 #endif // !_TREENODECLASS_H

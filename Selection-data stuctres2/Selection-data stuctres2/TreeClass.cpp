@@ -4,7 +4,7 @@
 //PrintTree: Print tree in Inorder. Items wil be printes in an increasing order.
 void BSTree::PrintTree(void)
 {
-    if (root != NULL)
+    if (root != nullptr)
         root->Inorder;
 }
 
@@ -50,9 +50,9 @@ void BSTree::Insert(KeyType k, DataType d)
 
     if (parent == NULL)
         root = newnode;
-    else if (k < parent->key)
-        parent->left = newnode;     //insert as left child
+    else if (k < parent->getkey())
+        parent->getleft() = newnode;     //insert as left child
     else
-        parent->right = newnode;    //insert as right child
+        parent->getright() = newnode;    //insert as right child
 }
 

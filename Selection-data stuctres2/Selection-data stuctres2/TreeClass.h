@@ -28,5 +28,7 @@ public:
     Type Max(void);
     void PrintTree(void);
     void Insert(KeyType k, DataType d);
+    
+
 };
 #endif // !_TREECLASS_H
