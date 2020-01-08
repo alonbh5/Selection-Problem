@@ -26,6 +26,9 @@ public:
     void Postorder();   //left, right, root
 
     KeyType getkey();
+    BSTreeNode* getleft();
+    BSTreeNode* getright();
+
 };
 
 #endif // !_TREENODECLASS_H

@@ -14,12 +14,12 @@ BSTreeNode* BSTree::Find(KeyType k)
     BSTreeNode* temp = root;
     while (temp != NULL)
     {
-        if (k == temp->key)
+        if (k == temp->getkey())
             return temp;
         else if (k < temp->getkey())
-            temp = temp->left;
+            temp = temp->getleft();
         else
-            temp = temp->right;
+            temp = temp->getright();
     }
     return NULL;
 }
@@ -40,13 +40,13 @@ void BSTree::Insert(KeyType k, DataType d)
     while (temp != NULL)
     {//find parent of new node
         parent = temp;
-        if (k < temp->key)
-            temp = root->left;
+        if (k < temp->getkey())
+            temp = root->getleft();
         else
-            temp = root->right;
+            temp = root->getright();
     }
 
-    newNode = new BSTreeNode(k, d, NULL, NULL);    //memory of new node
+    newnode = new BSTreeNode(k, d, NULL, NULL);    //memory of new node
 
     if (parent == NULL)
         root = newnode;
