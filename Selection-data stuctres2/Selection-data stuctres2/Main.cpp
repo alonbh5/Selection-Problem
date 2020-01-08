@@ -1,71 +1,37 @@
 #include "Person.h"
+#include "Selection.h"
 
 int main()
  {
-	int n, tz;
+    Person* arr = nullptr;
+    int n, k, id;
+    int NumCompR = 0, NumCompH = 0, NumCompBST = 0;
 	char name[MAX_SIZE];
 
-	cout << "Enter num of pairs: ";
+	cout << "Enter num of persons: ";
 	cin >> n;
-	cout << "\nEnter you pairs, name len max 20, each line pair\n";
-	cin >> tz;
-	cin.ignore();
-	cin.getline(name,MAX_SIZE);
+    arr = new Person[n];
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\nEnter you person details, taz and then name(len max 20)\n";
+        cin >> id;
+        cin.ignore();
+        cin.getline(name, MAX_SIZE);
+        arr[i].setId(id);
+        arr[i].setName(name);
+    }
 
+    cout << "Enter value to search: ";
+    cin >> k;
 
-
+    //option 1
+    const Person rselect = RandSelection(arr, 0, n-1, k, NumCompR);
+    //const Person hselect = selectHeap(arr, n, k, NumCompH);
+    //cout << NumComp;
 }
 
 /*
-#include <iostream>
 
-using namespace std;
-
-#pragma warning (disable:4996)
-
-void printarr(int A[])
-{
-    for (int i = 0; i < 10; i++)
-        cout << A[i] << " ";
-
-    cout << endl;
-}
-
-int Partition(int A[], int left, int right)
-{
-    int pivot = A[left];
-    cout<<endl<<"in Partition :"<<endl;
-    while (left != right)
-    {
-        if (A[left] > A[right])
-        {
-            swap(A[left], A[right]);
-        }
-        if (pivot == A[left])
-            right--;
-        else // Pivot == arr[right]
-            left++;
-        printarr(A);
-    }
-    return left;
-}
-
-int select(int A[], int left, int right, int i)
-{
-    int pivot, leftpart;
-
-    pivot = Partition(A,left,right);
-    cout << endl << "in select pivot is :"<<pivot << endl;
-    printarr(A);
-    leftpart = pivot - left + 1;
-
-    if (i == leftpart)
-        return A[pivot];
-    if (i < leftpart)
-        return select(A, left, pivot - 1, i);
-    else
-        return select(A, pivot + 1, right, i - leftpart);
-}
 
 void main()
 {

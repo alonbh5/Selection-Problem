@@ -112,6 +112,6 @@ Heap::Heap(Type A[], int n)
     data = A;                   //Assign array A to data pointer
     allocated = 0;              //Memory not allocated by heap
 
-    for (int i = (n / 2) - 1; i >= 0; i--) //flode
+    for (int i = (n / 2) - 1; i >= 0; i--) //flyde
         FixHeap(i);
 }
