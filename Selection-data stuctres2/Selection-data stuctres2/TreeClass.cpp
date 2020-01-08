@@ -14,20 +14,21 @@ void BSTree::Delete(KeyType item)
             BSTree temp(v->getleft());
             BSTreeNode* max_node = temp.Max();
 
-            v->setdata(max_node.ge)
+            v->setdata(max_node->getdata());
+            v->setkey(max_node->getkey());
+            this->Delete(max_node->getkey());
 
-            
         }
         else //case 1 child or less
         {
-            if (v->getright()) 
+            if (v->getright())
             {
                 v->getright()->setparent(father);
                 if (father->getleft() == v)
                     father->setleft(v->getright());
                 else
                     father->setright(v->getright());
-             }
+            }
             else
                 if (v->getleft())
                 {
@@ -42,13 +43,9 @@ void BSTree::Delete(KeyType item)
                         father->setleft(nullptr);
                     else
                         father->setright(nullptr);
-
+            delete v;
         }
-        delete v;
-            
     }
-
-
 }
 
 BSTreeNode* BSTree::Min(void)
