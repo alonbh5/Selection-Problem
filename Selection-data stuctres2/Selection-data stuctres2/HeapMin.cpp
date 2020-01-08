@@ -2,7 +2,7 @@
 
 
 //C'tor: allocate memory for the heap and make the heap empty.
-Heap::Heap(int max)
+void Heap::makeEmpty(int max)
 {
     data = new Type[max];
     maxSize = max;
@@ -16,6 +16,11 @@ Heap::~Heap()
     if (allocated)
         delete[] data;
     data = nullptr;
+}
+
+bool Heap::IsEmpty()
+{
+    return (this->heapSize==0);
 }
 
 Type Heap::Min()
@@ -107,6 +112,6 @@ Heap::Heap(Type A[], int n)
     data = A;                   //Assign array A to data pointer
     allocated = 0;              //Memory not allocated by heap
 
-    for (int i = (n / 2) - 1; i >= 0; i--)
+    for (int i = (n / 2) - 1; i >= 0; i--) //flode
         FixHeap(i);
 }

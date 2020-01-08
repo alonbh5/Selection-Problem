@@ -20,10 +20,11 @@ private:
     static int Right(int node);
     static int Parent(int node);
     void FixHeap(int node);
-public:
-    Heap(int max);                   //Allocate memory
+public:                     
     Heap(Type A[], int n);           //Turn A[] into heap
     ~Heap();
+    bool IsEmpty();
+    void makeEmpty(int max); //Allocate memory :)
     Type Min();
     Type DeleteMin(void);
     void Insert(Type item);

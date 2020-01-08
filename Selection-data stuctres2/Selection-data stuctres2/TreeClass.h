@@ -19,14 +19,16 @@ class BSTree
 private:
     BSTreeNode* root;
 public:
-    BSTree() { root = NULL; }   //empty c'tor
+    BSTree(BSTreeNode* root=nullptr);   //empty c'tor
     ~BSTree();
-    void Delete(Type item);
-    Type Min(void);
-    Type Max(void);
+    void Delete(KeyType item);
+    BSTreeNode* Min(void);
+    BSTreeNode* Max(void);
     void PrintTree(void);
     BSTreeNode* Find(KeyType k);
     void Insert(KeyType k, DataType d);
+
+    
     
 
 };

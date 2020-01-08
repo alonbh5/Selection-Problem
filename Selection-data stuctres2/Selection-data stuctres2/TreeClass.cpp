@@ -1,6 +1,104 @@
 #include "TreeClass.h"
 
 
+void BSTree::Delete(KeyType item)
+{
+    BSTreeNode* v = this->Find(item);
+    
+    if (v)
+    {
+        BSTreeNode* father = v->getpartent();//:)
+
+        if (v->getleft() && v->getright())  //case 2 chlid
+        {
+            BSTree temp(v->getleft());
+            BSTreeNode* max_node = temp.Max();
+
+            v->setdata(max_node.ge)
+
+            
+        }
+        else //case 1 child or less
+        {
+            if (v->getright()) 
+            {
+                v->getright()->setparent(father);
+                if (father->getleft() == v)
+                    father->setleft(v->getright());
+                else
+                    father->setright(v->getright());
+             }
+            else
+                if (v->getleft())
+                {
+                    v->getleft()->setparent(father);
+                    if (father->getleft() == v)
+                        father->setleft(v->getleft());
+                    else
+                        father->setright(v->getleft());
+                }
+                else //NO CHILD
+                    if (father->getleft() == v)
+                        father->setleft(nullptr);
+                    else
+                        father->setright(nullptr);
+
+        }
+        delete v;
+            
+    }
+
+
+}
+
+BSTreeNode* BSTree::Min(void)
+{
+    if (this->root)
+    {
+        if (this->root->getleft())
+        {
+            BSTree temp(this->root->getleft());
+            return temp.Max();
+        }
+        return this->root;
+
+    }
+    return nullptr;
+}
+
+BSTree::BSTree(BSTreeNode* root)
+{
+    this->root = root;
+}
+
+BSTree::~BSTree()
+{
+    if (root)
+    {
+        delete this->root->getleft();
+        delete this->root->getright();        
+    }
+    delete this->root;
+}
+
+//return ptr to node with max key value . nullptr if tree is empty
+BSTreeNode* BSTree::Max(void)
+{
+    
+    if (this->root)
+    {
+        if (this->root->getright())
+        {
+            BSTree temp(this->root->getright());
+            return temp.Max();
+        }
+        return this->root;
+               
+    }
+    return nullptr;
+    
+}
+
 //PrintTree: Print tree in Inorder. Items wil be printes in an increasing order.
 void BSTree::PrintTree(void)
 {
@@ -21,7 +119,7 @@ BSTreeNode* BSTree::Find(KeyType k)
         else
             temp = temp->getright();
     }
-    return NULL;
+    return nullptr;
 }
 
 //Insert into Binary Search Tree.
@@ -46,14 +144,19 @@ void BSTree::Insert(KeyType k, DataType d)
             temp = root->getright();
     }
 
-    newnode = new BSTreeNode(k, d, NULL, NULL);    //memory of new node
+    newnode = new BSTreeNode(k, d, nullptr, nullptr,nullptr);    //memory of new node
 
     if (parent == NULL)
         root = newnode;
-    else if (k < parent->getkey())
-        parent->setleft(newnode);     //insert as left child
     else
-        parent->setright(newnode);    //insert as right child
+    {
+        newnode->setparent(parent);
+        if (k < parent->getkey())
+           parent->setleft(newnode);
+        //insert as left child
+        else
+            parent->setright(newnode);    //insert as right child
+    }
 }
 
 
