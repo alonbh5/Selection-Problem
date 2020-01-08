@@ -1,5 +1,13 @@
 #include "TreeNodeClass.h"
 
+BSTreeNode::BSTreeNode(KeyType key, DataType data, BSTreeNode* left, BSTreeNode* right)
+{
+	this->key = key;
+	this->data = data;
+	this->right = right;
+	this->left = left; 
+}
+
 void BSTreeNode::Inorder()
 {
 	if (this->left != nullptr)

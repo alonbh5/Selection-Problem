@@ -5,7 +5,7 @@
 void BSTree::PrintTree(void)
 {
     if (root != nullptr)
-        root->Inorder;
+        root->Inorder();
 }
 
 //Find: Return pointer to node containing key k. Return NULL if item not in tree.
@@ -51,8 +51,8 @@ void BSTree::Insert(KeyType k, DataType d)
     if (parent == NULL)
         root = newnode;
     else if (k < parent->getkey())
-        parent->getleft() = newnode;     //insert as left child
+        parent->setleft(newnode);     //insert as left child
     else
-        parent->getright() = newnode;    //insert as right child
+        parent->setright(newnode);    //insert as right child
 }
 
