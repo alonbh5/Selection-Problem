@@ -1,12 +1,5 @@
 #include "Selection.h"
 
-void printarr(int A[])
-{
-    for (int i = 0; i < 10; i++)
-        cout << A[i] << " ";
-
-    cout << endl;
-}
 
 int Partition(Person A[], int left, int right, int& NumComp)
 {
@@ -39,4 +32,22 @@ const Person& RandSelection(Person A[], int left, int right, int k, int& NumComp
         return RandSelection(A, left, pivot - 1, k, NumComp);
     else
         return RandSelection(A, pivot + 1, right, k - leftpart, NumComp);
+}
+
+//notice - delete from array ! 
+const Person selectHeap(Person arr[], int size, int k, int& NumComp)
+{
+    Heap MinHeap(arr, size); 
+    Person res;
+
+    
+    for (int i = 0; i < k; i++)
+           res = MinHeap.DeleteMin(NumComp);
+                     
+    return (res);    
+}
+
+const Person& BST(Person arr[], int k, int& NumComp)
+{
+    // TODO: insert return statement here
 }

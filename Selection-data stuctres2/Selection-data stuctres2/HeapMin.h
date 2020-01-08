@@ -1,33 +1,33 @@
 #ifndef _HEAPMIN_H
 #define _HEAPMIN_H
 
-
+#include "Person.h"
 #include <iostream>
 
 using namespace std;
 
 #pragma warning (disable:4996)
 
-typedef int Type;
+//typedef int Type;
 class Heap
 {
 private:
-    Type* data;                       //Points to data array
+    Person* data;                       //Points to data array
     int maxSize;                      //Max size of heap
     int heapSize;                     //Current size of heap
     int allocated;                    //1 if heap allocated mamory
     static int Left(int node);
     static int Right(int node);
     static int Parent(int node);
-    void FixHeap(int node);
+    void FixHeap(int node, int& NumComp);
 public:                     
-    Heap(Type A[], int n);           //Turn A[] into heap
+    Heap(Person A[], int n);           //Turn A[] into heap
     ~Heap();
     bool IsEmpty();
     void makeEmpty(int max); //Allocate memory :)
-    Type Min();
-    Type DeleteMin(void);
-    void Insert(Type item);
+    Person Min();
+    Person DeleteMin(int& NumComp);
+    void Insert(Person& item);
 };
 
 #endif // !_HEAPMIN_H

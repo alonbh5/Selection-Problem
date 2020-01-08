@@ -26,7 +26,8 @@ int main()
 
     //option 1
     const Person rselect = RandSelection(arr, 0, n-1, k, NumCompR);
-    //const Person hselect = selectHeap(arr, n, k, NumCompH);
+
+    const Person hselect = selectHeap(arr, n, k, NumCompH);
     //cout << NumComp;
 }
 

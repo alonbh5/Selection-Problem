@@ -18,10 +18,10 @@ private:
 public:
 	Person()=default;
 	Person(const char* name,int id);
-	//Person(const Person& other) = delete;
+	Person(const Person& other);
 	
 	int getId() const;
-
+	const Person& operator=(const Person& other);
 	void setName(const char* name);
 	void setId(int id);
 
