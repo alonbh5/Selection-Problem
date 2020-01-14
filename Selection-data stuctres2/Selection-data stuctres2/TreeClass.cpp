@@ -120,7 +120,7 @@ BSTreeNode* BSTree::Find(int k)
 }
 
 //Insert into Binary Search Tree.
-void BSTree::Insert(int k, const char* d)
+void BSTree::Insert(int k, const char* d, int& NumComp)
 {
     if (Find(k) != NULL)
     {
@@ -135,6 +135,7 @@ void BSTree::Insert(int k, const char* d)
     while (temp != NULL)
     {//find parent of new node
         parent = temp;
+        NumComp++;
         if (k < temp->getkey())
             temp = temp->getleft();
         else

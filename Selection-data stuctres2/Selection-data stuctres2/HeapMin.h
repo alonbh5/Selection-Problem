@@ -12,7 +12,7 @@ using namespace std;
 class Heap
 {
 private:
-    Person* data;                       //Points to data array
+    Person* data;                      //Points to data array
     int maxSize;                      //Max size of heap
     int heapSize;                     //Current size of heap
     int allocated;                    //1 if heap allocated mamory

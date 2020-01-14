@@ -19,7 +19,7 @@ private:
 public:
     //BSTreeNode();   //empty c'tor
     BSTreeNode(int key,const char* data, BSTreeNode* left, BSTreeNode* right, BSTreeNode* parent);    //c'tor
-   // ~BSTreeNode();  //d'tor
+    ~BSTreeNode()=default;  //d'tor
     void Inorder();     //left, root, right
     void Preorder();    //root, left, right
     void Postorder();   //left, right, root

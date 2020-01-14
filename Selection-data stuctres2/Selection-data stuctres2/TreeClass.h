@@ -26,7 +26,7 @@ public:
     BSTreeNode* Max(void);
     void PrintTree(void);
     BSTreeNode* Find(int k);
-    void Insert(int k, const char* d);
+    void Insert(int k, const char* d, int& NumComp);
     BSTreeNode* getroot();
 
 
