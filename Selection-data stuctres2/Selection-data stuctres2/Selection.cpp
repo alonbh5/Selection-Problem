@@ -1,6 +1,5 @@
 #include "Selection.h"
 
-
 int Partition(Person A[], int left, int right, int& NumComp)
 {
     int pivot = A[left].getId();
@@ -45,14 +44,12 @@ const Person RandSelection(Person A[], int left, int right, int k, int& NumComp)
 
     //Tworst(n) = Tworst(n-1) + Tworst(0) + teta(n) = teta(n^2). worst case - pivot=0.
     //Taverage(n) = teta(n). Upper bound=Tworst=omega(n^2), Lower bound=O(n), average when prob(pivot=i)=1/size
-
 }
 
 const Person selectHeap(Person arr[], int size, int k, int& NumComp)
 {//size = n
     Heap MinHeap(arr, size); //teta(n)
     Person res;
-
     
     for (int i = 0; i < k; i++)                 //teta(k)
            res = MinHeap.DeleteMin(NumComp);    //teta(logn)
@@ -76,8 +73,7 @@ const Person BST(Person arr[], int size, int k, int& NumComp)
 
     return (res);
     //Tworst(n)=n*n+n=teta(n^2). worst case h = n.
-    //Taverage(n)=n*logn+logn=teta(nlogn). average case h=logn
-        
+    //Taverage(n)=n*logn+logn=teta(nlogn). average case h=logn 
 }
 
 void runSelection(Person arr[], int size, int k)
@@ -98,7 +94,6 @@ void runSelection(Person arr[], int size, int k)
     const Person hselect = selectHeap(arr1, size, k, NumCompH);
     const Person Bselect = BST(arr2, size, k, NumCompBST);
 
-
     cout << hselect.getId() << " " << hselect.getname() << endl;
     cout << "RandSelection: " << NumCompR << " comparisons" << endl << endl;
     cout << "selectHeap: " << NumCompH << " comparisons" << endl << endl;
@@ -106,7 +101,6 @@ void runSelection(Person arr[], int size, int k)
 
     delete[] arr1;
     delete[] arr2;
-
 }
 
 void readArr(Person*& arr, int& size, int& k)
@@ -119,7 +113,6 @@ void readArr(Person*& arr, int& size, int& k)
     arr = new Person[size];
     for (int i = 0; i < size; i++)
     {
-
         cout << "\nEnter person's details: first ID and then Name (max length is 20)\n";
         cin >> id;
 

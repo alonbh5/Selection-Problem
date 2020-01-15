@@ -8,11 +8,10 @@ using namespace std;
 
 #pragma warning (disable:4996)
 
-//typedef int Type;
 class Heap
 {
 private:
-    Person* data;                      //Points to data array
+    Person* data;                     //Points to data array
     int maxSize;                      //Max size of heap
     int heapSize;                     //Current size of heap
     int allocated;                    //1 if heap allocated mamory
@@ -21,10 +20,10 @@ private:
     static int Parent(int node);
     void FixHeap(int node, int& NumComp);
 public:                     
-    Heap(Person A[], int n);           //Turn A[] into heap
+    Heap(Person A[], int n);            //Turn A[] into heap
     ~Heap();
     bool IsEmpty();
-    void makeEmpty(int max); //Allocate memory :)
+    void makeEmpty(int max);            //Allocate memory
     Person Min();
     Person DeleteMin(int& NumComp);
     void Insert(Person& item);

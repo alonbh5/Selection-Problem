@@ -1,5 +1,19 @@
 #include "TreeClass.h"
 
+BSTree::BSTree(BSTreeNode* root)
+{
+    this->root = root;
+}
+
+BSTree::~BSTree()
+{
+    if (root)
+    {
+        delete this->root->getleft();
+        delete this->root->getright();
+    }
+    delete this->root;
+}
 
 void BSTree::Delete(int item)
 {
@@ -38,7 +52,7 @@ void BSTree::Delete(int item)
                     else
                         father->setright(v->getleft());
                 }
-                else //NO CHILD
+                else //No child
                     if (father->getleft() == v)
                         father->setleft(nullptr);
                     else
@@ -48,6 +62,7 @@ void BSTree::Delete(int item)
     }
 }
 
+//return ptr to node with min key value . nullptr if tree is empty
 BSTreeNode* BSTree::Min(void)
 {
     if (this->root)
@@ -58,30 +73,13 @@ BSTreeNode* BSTree::Min(void)
             return temp.Max();
         }
         return this->root;
-
     }
     return nullptr;
 }
 
-BSTree::BSTree(BSTreeNode* root)
-{
-    this->root = root;
-}
-
-BSTree::~BSTree()
-{
-    if (root)
-    {
-        delete this->root->getleft();
-        delete this->root->getright();        
-    }
-    delete this->root;
-}
-
 //return ptr to node with max key value . nullptr if tree is empty
 BSTreeNode* BSTree::Max(void)
-{
-    
+{    
     if (this->root)
     {
         if (this->root->getright())
@@ -89,25 +87,23 @@ BSTreeNode* BSTree::Max(void)
             BSTree temp(this->root->getright());
             return temp.Max();
         }
-        return this->root;
-               
+        return this->root;      
     }
     return nullptr;
-    
 }
 
-//PrintTree: Print tree in Inorder. Items wil be printes in an increasing order.
+//PrintTree: Print tree in Inorder. Items wil be printed in an increasing order.
 void BSTree::PrintTree(void)
 {
     if (root != nullptr)
         root->Inorder();
 }
 
-//Find: Return pointer to node containing key k. Return NULL if item not in tree.
+//Find: Return pointer to node containing key k. Return nullptr if item not in tree.
 BSTreeNode* BSTree::Find(int k)
 {
     BSTreeNode* temp = root;
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         if (k == temp->getkey())
             return temp;
@@ -128,11 +124,11 @@ void BSTree::Insert(int k, const char* d, int& NumComp)
         return;
     }
 
-    BSTreeNode* temp = root;    //Curr node in tree
-    BSTreeNode* parent = NULL;  //Parent of temp
-    BSTreeNode* newnode;        //New allocated node
+    BSTreeNode* temp = root;       //Curr node in tree
+    BSTreeNode* parent = nullptr;  //Parent of temp
+    BSTreeNode* newnode;           //New allocated node
 
-    while (temp != NULL)
+    while (temp != nullptr)
     {//find parent of new node
         parent = temp;
         NumComp++;
@@ -144,16 +140,15 @@ void BSTree::Insert(int k, const char* d, int& NumComp)
 
     newnode = new BSTreeNode(k, d, nullptr, nullptr,nullptr);    //memory of new node
 
-    if (parent == NULL)
+    if (parent == nullptr)
         root = newnode;
     else
     {
         newnode->setparent(parent);
         if (k < parent->getkey())
-           parent->setleft(newnode);
-        //insert as left child
+           parent->setleft(newnode);    //insert as left child
         else
-            parent->setright(newnode);    //insert as right child
+            parent->setright(newnode);  //insert as right child
     }
 }
 
@@ -161,6 +156,3 @@ BSTreeNode* BSTree::getroot()
 {
     return this->root;
 }
-
-
-

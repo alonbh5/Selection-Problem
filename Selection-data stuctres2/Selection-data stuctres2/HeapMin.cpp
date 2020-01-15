@@ -1,13 +1,17 @@
 #include "HeapMin.h"
 
-
-//C'tor: allocate memory for the heap and make the heap empty.
-void Heap::makeEmpty(int max)
+//C'tor: convert an array which contains n persons into a heap.
+//Idea: the persons in places n-1,...,n/2 are leaves.
+//Build small heaps starting from leaves, and fix heaps while going towards the root.
+Heap::Heap(Person A[], int n)
 {
-    data = new Person[max];
-    maxSize = max;
-    heapSize = 0;
-    allocated = 1;
+    heapSize = maxSize = n;
+    int x = 0;
+    data = A;                   //Assign array A to data pointer
+    allocated = 0;              //Memory not allocated by heap
+
+    for (int i = (n / 2) - 1; i >= 0; i--) //flyde
+        FixHeap(i, x);
 }
 
 //D'tor: delete memory only if allocates by heap
@@ -20,7 +24,16 @@ Heap::~Heap()
 
 bool Heap::IsEmpty()
 {
-    return (this->heapSize==0);
+    return (this->heapSize == 0);
+}
+
+//C'tor: allocate memory for the heap and make the heap empty.
+void Heap::makeEmpty(int max)
+{
+    data = new Person[max];
+    maxSize = max;
+    heapSize = 0;
+    allocated = 1;
 }
 
 Person Heap::Min()
@@ -28,49 +41,7 @@ Person Heap::Min()
 	return this->data[0];
 }
 
-
-//Private Member functions of Heap class
-
-int Heap::Parent(int node)
-{
-    return (node - 1) / 2;
-}
-
-int Heap::Left(int node)
-{
-    return (2 * node + 1);
-}
-
-int Heap::Right(int node)
-{
-    return (2 * node + 2);
-}
-
-void Heap::FixHeap(int node, int& NumComp)    //Fixes the heap that has node as root
-{
-    int min;
-    int left = Left(node);
-    int right = Right(node);
-
-    //Find min among node, left and right.
-    NumComp++;
-    if ((left < heapSize) && (data[left].getId() < data[node].getId()))
-        min = left;
-    else 
-        min = node;
-    NumComp++;
-    if ((right < heapSize) && (data[right].getId() < data[min].getId()))
-        min = right;
-
-    //Seap values if neccessary, and continue fixing the heap towards the leaves.
-    if (min != node)
-    {
-        std::swap(data[node], data[min]);
-            FixHeap(min,NumComp);
-    }
-}
-
-//Delete minum which is found in the root of heap, and fix heap.
+//Delete minimum which is found in the root of heap, and fix heap.
 Person Heap::DeleteMin(int& NumComp)
 {
 	if (heapSize < 1)
@@ -106,16 +77,43 @@ void Heap::Insert(Person& item)
     data[i] = item;
 }
 
-//C'tor: convert an array which contains n numbers into a heap.
-//Idea: the numbers in places n-1,...,n/2 are leaves.
-//Build small heaps starting from leaves, and fix heaps while going towards the root.
-Heap::Heap(Person A[], int n)
-{
-    heapSize = maxSize = n;
-    int x=0;
-    data = A;                   //Assign array A to data pointer
-    allocated = 0;              //Memory not allocated by heap
+//Private member functions of Heap class
 
-    for (int i = (n / 2) - 1; i >= 0; i--) //flyde
-        FixHeap(i,x);
+int Heap::Parent(int node)
+{
+    return (node - 1) / 2;
+}
+
+int Heap::Left(int node)
+{
+    return (2 * node + 1);
+}
+
+int Heap::Right(int node)
+{
+    return (2 * node + 2);
+}
+
+void Heap::FixHeap(int node, int& NumComp)    //Fixes the heap that has node as root
+{
+    int min;
+    int left = Left(node);
+    int right = Right(node);
+
+    //Find min among node, left and right.
+    NumComp++;
+    if ((left < heapSize) && (data[left].getId() < data[node].getId()))
+        min = left;
+    else
+        min = node;
+    NumComp++;
+    if ((right < heapSize) && (data[right].getId() < data[min].getId()))
+        min = right;
+
+    //Swap values if neccessary, and continue fixing the heap towards the leaves.
+    if (min != node)
+    {
+        std::swap(data[node], data[min]);
+        FixHeap(min, NumComp);
+    }
 }

@@ -1,4 +1,3 @@
-#include "Person.h"
 #include "Selection.h"
 
 //Shira Ostrinsky 311119002
@@ -17,7 +16,4 @@ int main()
     runSelection(arr, size, k);
     
     delete[] arr;
-    
-    system("pause");
 }
-

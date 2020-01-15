@@ -43,44 +43,9 @@ void BSTreeNode::Postorder()
 	cout << endl;
 }
 
-int BSTreeNode::getkey()
+int BSTreeNode::getkey() const
 {
 	return this->key;
-}
-
-char* BSTreeNode::getdata() 
-{
-	return this->data;
-}
-
-BSTreeNode* BSTreeNode::getleft()
-{
-	return this->left;
-}
-
-BSTreeNode* BSTreeNode::getright()
-{
-	return this->right;
-}
-
-BSTreeNode* BSTreeNode::getpartent()
-{
-	return this->parent;
-}
-
-void BSTreeNode::setright(BSTreeNode* right)
-{
-	this->right = right;
-}
-
-void BSTreeNode::setleft(BSTreeNode* left)
-{
-	this->left = left;
-}
-
-void BSTreeNode::setparent(BSTreeNode* parent)
-{
-	this->parent = parent;
 }
 
 void BSTreeNode::setkey(int key)
@@ -88,16 +53,51 @@ void BSTreeNode::setkey(int key)
 	this->key = key;
 }
 
+const char* BSTreeNode::getdata() const
+{
+	return this->data;
+}
+
 void BSTreeNode::setdata(const char* data)
 {
 	strcpy(this->data, data);
 }
 
-void BSTreeNode::FindkNumber(int& k, int& NumComp, Person &res)
+BSTreeNode* BSTreeNode::getleft() const
 {
+	return this->left;
+}
+
+void BSTreeNode::setleft(BSTreeNode* left)
+{
+	this->left = left;
+}
+
+BSTreeNode* BSTreeNode::getright() const
+{
+	return this->right;
+}
+
+void BSTreeNode::setright(BSTreeNode* right)
+{
+	this->right = right;
+}
+
+BSTreeNode* BSTreeNode::getpartent() const
+{
+	return this->parent;
+}
+
+void BSTreeNode::setparent(BSTreeNode* parent)
+{
+	this->parent = parent;
+}
+
+void BSTreeNode::FindkNumber(int& k, int& NumComp, Person &res)
+{//go over the tree in inorder way, reduce k each time it gets to root.
+ //When k reach 0 it's the root with key we are looking for. Return from all recursive calls.
 	if (k <= -1)
 		return;
-	
 
 	if (this->left != nullptr)
 		this->left->FindkNumber(k, NumComp,res);
@@ -111,7 +111,4 @@ void BSTreeNode::FindkNumber(int& k, int& NumComp, Person &res)
 	}
 	if (this->right != nullptr)
 		this->right->FindkNumber(k, NumComp,res);
-	
-
-	
 }

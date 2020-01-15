@@ -8,16 +8,13 @@ using namespace std;
 
 #pragma warning (disable:4996)
 
-
-//Binary Search Tree Class page 146
-
-typedef int Type;
 class BSTreeNode;
 
 class BSTree
 {
 private:
     BSTreeNode* root;
+
 public:
     BSTree(BSTreeNode* root=nullptr);   //empty c'tor
     ~BSTree();
@@ -28,10 +25,5 @@ public:
     BSTreeNode* Find(int k);
     void Insert(int k, const char* d, int& NumComp);
     BSTreeNode* getroot();
-
-
-    
-    
-
 };
 #endif // !_TREECLASS_H
